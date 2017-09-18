@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to projects_url
     else
+      flash.now[:alert] = @project.errors.full_messages.first
       render :new
     end
    end

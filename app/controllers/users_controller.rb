@@ -14,6 +14,7 @@ class UsersController < ApplicationController
       auto_login(@user)
       redirect_to projects_url
     else
+      flash.now[:alert] = @user.errors.full_messages.first
       render 'new'
     end
   end
