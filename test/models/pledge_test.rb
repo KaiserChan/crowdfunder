@@ -1,5 +1,4 @@
 require_relative '../test_helper'
-require 'pry'
 
 class PledgeTest < ActiveSupport::TestCase
 
@@ -23,7 +22,6 @@ class PledgeTest < ActiveSupport::TestCase
     pledge = Pledge.new(dollar_amount: 3.00, project: project)
     pledge.user = owner
     pledge.save
-    binding.pry
     assert pledge.invalid?, 'Owner should not be able to pledge towards own project'
 
   end
