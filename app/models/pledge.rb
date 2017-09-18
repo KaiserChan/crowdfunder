@@ -2,8 +2,8 @@ class Pledge < ApplicationRecord
   belongs_to :user
   belongs_to :project
 
-  validates :dollar_amount, presence: true
-  validates :user, presence: true
+  validates :dollar_amount,:project_id, presence: true
+  validates :user_id, presence: true
   validate :unique_user
 
   def unique_user

@@ -1,12 +1,21 @@
 require_relative '../test_helper'
+require 'pry'
 
 class PledgeTest < ActiveSupport::TestCase
 
   test 'A pledge can be created' do
+    owner = new_user
+    owner.save
+    project = new_project
+    project.user = owner
+    project.save
+    pledgie = new_user
+    pledgie.email = "pledgie@gmail.com"
+    pledgie.save
     pledge = Pledge.create(
       dollar_amount: 99.00,
-      project: new_project,
-      user: new_user
+      project: project,
+      user: pledgie
     )
     pledge.save
     assert pledge.valid?
