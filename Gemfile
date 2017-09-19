@@ -4,6 +4,9 @@ source 'https://rubygems.org'
 gem 'rails', '~> 5.1.1'
 gem 'puma', '~> 3.0'
 
+# Factory
+gem 'factory_girl'
+
 # Styles
 gem 'sass-rails'
 gem 'font-awesome-sass', '~> 4.7.0'

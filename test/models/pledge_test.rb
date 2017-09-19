@@ -1,9 +1,11 @@
 require_relative '../test_helper'
 require 'pry'
 
-class PledgeTest < ActiveSupport::TestCase
 
+class PledgeTest < ActiveSupport::TestCase
   test 'A pledge can be created' do
+
+    #binding pry
     owner = new_user
     owner.save
     project = new_project
@@ -12,11 +14,7 @@ class PledgeTest < ActiveSupport::TestCase
     pledgie = new_user
     pledgie.email = "pledgie@gmail.com"
     pledgie.save
-    pledge = Pledge.create(
-      dollar_amount: 99.00,
-      project: project,
-      user: pledgie
-    )
+    pledge = build(:pledge,project: project,user: pledgie)
     pledge.save
     assert pledge.valid?
     assert pledge.persisted?
@@ -28,7 +26,7 @@ class PledgeTest < ActiveSupport::TestCase
     project = new_project
     project.user = owner
     project.save
-    pledge = Pledge.new(dollar_amount: 3.00, project: project)
+    pledge = build(:pledge,project: project)
     pledge.user = owner
     pledge.save
     assert pledge.invalid?, 'Owner should not be able to pledge towards own project'
