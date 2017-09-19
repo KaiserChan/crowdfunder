@@ -36,17 +36,7 @@ class RewardTest < ActiveSupport::TestCase
     assert reward.new_record?, 'Reward should not save without a description'
   end
 
-  test 'Reward dollar amount must be positive' do
-    project = new_project
-    project.save
-    reward = Reward.create(
-      dollar_amount: 1.00,
-      description: 'A heartfelt thanks!',
-      project: project
-    )
-    assert reward.valid?
-    assert reward.persisted?
-  end
+
 
   def new_project
     Project.new(
