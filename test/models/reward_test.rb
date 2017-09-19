@@ -3,8 +3,7 @@ require 'test_helper'
 class RewardTest < ActiveSupport::TestCase
 
   test 'A reward can be created' do
-    project = new_project
-    project.save
+    project = build(:project)
     reward = Reward.create(
       dollar_amount: 99.00,
       description: 'A heartfelt thanks!',
@@ -15,8 +14,7 @@ class RewardTest < ActiveSupport::TestCase
   end
 
   test 'A reward cannot be created without a dollar amount' do
-    project = new_project
-    project.save
+    project = build(:project)
     reward = Reward.create(
       description: 'A heartfelt thanks!',
       project: project
@@ -26,8 +24,7 @@ class RewardTest < ActiveSupport::TestCase
   end
 
   test 'A reward cannot be created without a description' do
-    project = new_project
-    project.save
+    project = build(:project)
     reward = Reward.create(
       dollar_amount: 99.00,
       project: project
@@ -37,8 +34,7 @@ class RewardTest < ActiveSupport::TestCase
   end
 
   test 'Reward dollar amount must be positive' do
-    project = new_project
-    project.save
+    project = build(:project)
     reward = Reward.create(
       dollar_amount: 1.00,
       description: 'A heartfelt thanks!',
@@ -48,14 +44,5 @@ class RewardTest < ActiveSupport::TestCase
     assert reward.persisted?
   end
 
-  def new_project
-    Project.new(
-      title:       'Cool new boardgame',
-      description: 'Trade sheep',
-      start_date:  Date.today,
-      end_date:    Date.today + 1.month,
-      goal:        50000
-    )
-  end
 
 end
