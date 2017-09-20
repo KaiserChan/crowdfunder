@@ -17,13 +17,11 @@ class RewardTest < ActiveSupport::TestCase
   test 'A reward cannot be created without a description' do
     reward = build(:reward, description: nil)
     assert reward.invalid?, 'Reward should be invalid without a description'
-
   end
 
   test 'Reward dollar amount must be positive' do
     reward = build(:reward)
     assert reward.valid?
   end
-
 
 end
