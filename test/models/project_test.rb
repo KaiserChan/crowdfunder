@@ -14,8 +14,8 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test 'project is invalid without owner' do
-
-    project = build(:project)
+    user1 = build(:user, first_name: "Joe")
+    project = build(:project, user: user1)
     project.save
     assert project.invalid?, 'Project should not save without owner.'
   end
