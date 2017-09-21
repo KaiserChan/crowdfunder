@@ -1,6 +1,12 @@
 class ProjectsController < ApplicationController
   before_action :require_login, only: [:new, :create]
 
+  def home
+    @projects = Project.all
+    @pledges = Pledge.all
+    
+  end
+
   def index
     @projects = Project.all
     @projects = @projects.order(:end_date)

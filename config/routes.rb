@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "projects#index"
+  root "projects#home"
 
   get 'login' => 'user_sessions#new', :as => :login
   delete 'logout' => 'user_sessions#destroy', :as => :logout

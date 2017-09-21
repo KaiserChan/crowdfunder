@@ -1,0 +1,14 @@
+<h1>Realize Your Dream With Us</h1>
+
+<h2> Total Projects Started: <%= @projects.count %></h2>
+<%= link_to "See All Projects", projects_path %>
+
+<% @projects.each do |project| %>
+<ul>
+  <li> <%= project.title %></li>
+  <p> Dollar pledged: $<%= project.pledges.sum(:dollar_amount) %></p>
+</ul>
+<% end %>
+
+<p>
+</p>
