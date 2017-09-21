@@ -7,8 +7,9 @@
 <ul>
   <li> <%= project.title %></li>
   <p> Dollar pledged: $<%= project.pledges.sum(:dollar_amount) %></p>
+  <p> Project Goal: $ <%= project.goal %> </p>
+  <% if project.goal <= project.pledges.sum(:dollar_amount)  %>
+  <p> Project successfully funded</p>
+  <% end %>
 </ul>
 <% end %>
-
-<p>
-</p>
